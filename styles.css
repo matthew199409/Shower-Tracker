@@ -1,0 +1,472 @@
+/* Animated pastel background */
+body {
+  font-family: "Quicksand", "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  color: #22223b;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: url("https://svgshare.com/i/13vG.svg") repeat;
+  opacity: 0.1;
+  z-index: 0;
+  animation: moveBubbles 60s linear infinite;
+}
+
+@keyframes moveBubbles {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100vw 100vh;
+  }
+}
+
+/* Mascot styles */
+.mascot-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+  min-height: 120px;
+}
+
+.mascot {
+  position: relative;
+  width: 120px;
+  height: 90px;
+}
+
+.drop-face {
+  width: 60px;
+  height: 80px;
+  background: linear-gradient(160deg, #90e0ef 60%, #48cae4 100%);
+  border-radius: 50% 50% 60% 60% / 60% 60% 100% 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 4px 16px #bde0fe99;
+  animation: mascotBounce 2.2s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 2;
+  border-bottom: 4px solid #00b4d8;
+}
+
+@keyframes mascotBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.eye {
+  width: 12px;
+  height: 12px;
+  background: #22223b;
+  border-radius: 50%;
+  position: absolute;
+  top: 44px;
+  z-index: 3;
+  box-shadow: 0 2px 8px #bde0fe55;
+  animation: eyeBlink 3s infinite;
+}
+
+@keyframes eyeBlink {
+  0%,
+  92%,
+  100% {
+    height: 12px;
+  }
+  95% {
+    height: 3px;
+  }
+  98% {
+    height: 12px;
+  }
+}
+
+.eye.left {
+  left: 14px;
+}
+.eye.right {
+  left: 34px;
+}
+
+.smile {
+  width: 22px;
+  height: 10px;
+  border-bottom: 3px solid #22223b;
+  border-radius: 0 0 16px 16px;
+  position: absolute;
+  left: 50%;
+  top: 62px;
+  transform: translateX(-50%);
+  z-index: 3;
+  animation: smileWiggle 2.5s infinite;
+}
+
+@keyframes smileWiggle {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(3deg);
+  }
+}
+
+/* Thought bubbles to the right */
+.thought-bubble {
+  position: absolute;
+  background: #fff;
+  opacity: 0.85;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px #bde0fe44;
+  animation: bubbleFloat 2.5s infinite;
+  z-index: 1;
+}
+
+.bubble1 {
+  width: 18px;
+  height: 18px;
+  left: 70px;
+  top: 18px;
+  animation-delay: 0s;
+}
+.bubble2 {
+  width: 12px;
+  height: 12px;
+  left: 90px;
+  top: 8px;
+  animation-delay: 0.5s;
+}
+.bubble3 {
+  width: 7px;
+  height: 7px;
+  left: 105px;
+  top: 2px;
+  animation-delay: 1s;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.08);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Speech bubble */
+.speech-bubble {
+  position: absolute;
+  left: 70px;
+  top: 40px;
+  min-width: 90px;
+  max-width: 180px;
+  background: #fff;
+  color: #22223b;
+  border-radius: 18px;
+  padding: 0.7em 1em;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px #bde0fe55;
+  border: 2px solid #bde0fe;
+  z-index: 10;
+  animation: bubblePop 0.7s;
+  white-space: pre-line;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 18px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 18px solid #fff;
+  filter: drop-shadow(-2px 0 0 #bde0fe);
+}
+
+@keyframes bubblePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Headings and page content */
+h1 {
+  text-align: center;
+  margin-top: 2.5rem;
+  color: #3a86ff;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  text-shadow: 1px 2px 8px #bde0fe;
+  animation: bounceIn 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(-60px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1) translateY(10px);
+  }
+  80% {
+    transform: scale(0.95) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+p {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #5f5f5f;
+  font-size: 1.2rem;
+  animation: fadeIn 1.8s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Form styles */
+form {
+  background: rgba(255, 255, 255, 0.97);
+  max-width: 420px;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(58, 134, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  border: 2px solid #bde0fe;
+  position: relative;
+  animation: floaty 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  100% {
+    transform: translateY(-10px) scale(1.01);
+  }
+}
+
+form::before {
+  content: "🚿";
+  font-size: 2.2rem;
+  position: absolute;
+  top: -1.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 50%;
+  padding: 0.3rem 0.7rem;
+  box-shadow: 0 2px 8px #bde0fe55;
+  animation: emojiJump 1.5s infinite alternate
+    cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes emojiJump {
+  0% {
+    transform: translateX(-50%) scale(1) translateY(0);
+  }
+  60% {
+    transform: translateX(-50%) scale(1.15, 0.85) translateY(-8px);
+  }
+  100% {
+    transform: translateX(-50%) scale(1) translateY(0);
+  }
+}
+
+label {
+  font-weight: 600;
+  color: #4361ee;
+  margin-bottom: 0.2rem;
+  transition: color 0.2s;
+}
+
+input[type="number"] {
+  padding: 0.7rem;
+  border: 1.5px solid #bde0fe;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  background: #f1f8ff;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px #bde0fe33;
+}
+
+input[type="number"]:focus {
+  border: 1.5px solid #3a86ff;
+  outline: none;
+  background: #e0f7fa;
+  box-shadow: 0 2px 8px #3a86ff33;
+  animation: inputPulse 0.4s;
+}
+
+@keyframes inputPulse {
+  0% {
+    box-shadow: 0 0 0 0 #3a86ff44;
+  }
+  70% {
+    box-shadow: 0 0 0 8px #3a86ff22;
+  }
+  100% {
+    box-shadow: 0 2px 8px #3a86ff33;
+  }
+}
+
+button {
+  background: linear-gradient(90deg, #3a86ff 60%, #00b4d8 100%);
+  color: #fff;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px #bde0fe55;
+  transition: background 0.2s, transform 0.1s;
+  z-index: 2;
+  position: relative;
+  animation: buttonPop 2.5s infinite alternate;
+}
+
+@keyframes buttonPop {
+  0% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+button:hover {
+  background: linear-gradient(90deg, #00b4d8 60%, #3a86ff 100%);
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 4px 16px #bde0fe99;
+}
+
+button:active {
+  animation: buttonBounce 0.2s;
+}
+
+@keyframes buttonBounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.93);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#result {
+  max-width: 420px;
+  margin: 1.5rem auto 0 auto;
+  padding: 1.2rem 1rem;
+  background: linear-gradient(90deg, #f1f8ff 60%, #bde0fe 100%);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #22223b;
+  box-shadow: 0 2px 8px #bde0fe55;
+  display: none;
+  border: 1.5px solid #bde0fe;
+  animation: resultPop 0.8s;
+}
+
+@keyframes resultPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .mascot {
+    width: 90px;
+    height: 80px;
+  }
+  .drop-face {
+    left: 0;
+    width: 45px;
+    height: 60px;
+  }
+  .bubble1,
+  .bubble2,
+  .bubble3 {
+    left: auto;
+    right: 0;
+  }
+  .speech-bubble {
+    left: 60px;
+    top: 18px;
+    min-width: 70px;
+    font-size: 0.95rem;
+    padding: 0.5em 0.7em;
+  }
+  form,
+  #result {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+}

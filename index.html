@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shower Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Welcome to Shower Tracker</h1>
+    <p>Track your shower usage and save water!</p>
+
+    <div class="mascot-container">
+      <div class="mascot">
+        <div class="drop-face">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+          <div class="smile"></div>
+        </div>
+        <div class="thought-bubble bubble1"></div>
+        <div class="thought-bubble bubble2"></div>
+        <div class="thought-bubble bubble3"></div>
+        <div class="speech-bubble" id="mascot-speech">Let's save water!</div>
+      </div>
+    </div>
+
+    <form id="shower-form">
+      <label for="duration">Shower Duration (minutes):</label>
+      <input type="number" id="duration" name="duration" min="1" required />
+
+      <label for="flow-rate">Shower Flow Rate (liters per minute):</label>
+      <input
+        type="number"
+        id="flow-rate"
+        name="flow-rate"
+        min="1"
+        value="9"
+        required
+      />
+
+      <button type="submit">Calculate Water Used</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script src="shower-tracker.js"></script>
+  </body>
+</html>
