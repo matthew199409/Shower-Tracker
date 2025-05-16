@@ -1,0 +1,1 @@
+This is a simple project i made that roughly calculates how much water we use with each shower. In hopes that maybe one day it could inspire people to consider and adjust to help save our planet. 😃 🌏 🌎 
